@@ -19,7 +19,7 @@ Tinker原理如下图所示：
 ### 2.2 热更新集成步骤（暂未考虑NDK）
 详情可参考：[Bugly Android热更新使用指南](https://bugly.qq.com/docs/user-guide/instruction-manual-android-hotfix/?v=20180709165613#_1)
 #### 2.2.1 注册并获取APP_ID 
-到[Bugly官网](https://bugly.qq.com/v2/index)注册并新建项目，随后在“产品设置”下可以看到“产品信息”中的App ID，
+到 [Bugly官网](https://bugly.qq.com/v2/index) 注册并新建项目，随后在“产品设置”下可以看到“产品信息”中的App ID，
 这个ID非常重要，后续需要添加到项目配置中的。  
 ![image](https://github.com/tianyalu/BuglyDemo/blob/master/show/bugly_appid.png)  
 #### 2.2.2 添加依赖插件
@@ -221,7 +221,7 @@ public class MyApplication extends TinkerApplication {
     }
 }
 ```
-**注意：**这个类集成TinkerApplication类，这里面不做任何操作，所有Application的代码都会放到ApplicationLike
+**注意：** 这个类集成TinkerApplication类，这里面不做任何操作，所有Application的代码都会放到ApplicationLike
 继承类当中。  
 `ApplicationLike`类中内容如下：  
 ```java
@@ -348,15 +348,18 @@ Tinker需要开启MultiDex，需要在dependencies中配置`implementation 'com.
 
 ### 2.3 热更新操作步骤
 详情可参考：[热更新使用范例](https://bugly.qq.com/docs/user-guide/instruction-manual-android-hotfix-demo/)  
-* 打基准安装包并上报联网：安装包要上传到Bugly管理后台，本地安装此apk并启动。（注：填写唯一的tinkerId，
+#### 2.3.1 打基准安装包并上报联网
+安装包要上传到Bugly管理后台，本地安装此apk并启动。（注：填写唯一的tinkerId，
 注释掉`tinker-support.gradle`中的`baseApk = "${bakPath}/${baseApkDir}/app-release.apk"`）  
-* 对基准包的bug修复（可以是Java代码变更，资源的变更）  
-* 修改基准包路径[替换为bakApk下基于哪个基准版本要修复的文件夹名称]、修改补丁包tinkerId、mapping文件路径
+#### 2.3.2 对基准包的bug修复（可以是Java代码变更，资源的变更）  
+#### 2.3.3 修改路径
+修改基准包路径[替换为bakApk下基于哪个基准版本要修复的文件夹名称]、修改补丁包tinkerId、mapping文件路径
 （如果开启了混淆需要配置）、resId文件路径。（打开`tinker-support.gradle`中的
 `baseApk = "${bakPath}/${baseApkDir}/app-release.apk"`注释）  
-* 执行`buildTinkerPatchRelease`打Release版本补丁包  
-* 选择app/build/outputs/patch目录下的补丁包并上传。（注：不要选择tinkerPatch目录下的补丁包，不然上传会有问题）  
-* 编辑下发补丁规则，点击“立即下发”  
-* 杀死进程并重启基准包，请求补丁策略（SDK会自动下载补丁包并合成）  
-* 再次重启基准包，检验补丁应用结果  
-* 查看页面，查看激活数据的变化  
+#### 2.3.4 执行`buildTinkerPatchRelease`打Release版本补丁包  
+#### 2.3.5 选择app/build/outputs/patch目录下的补丁包并上传
+注：不要选择tinkerPatch目录下的补丁包，不然上传会有问题  
+#### 2.3.6 编辑下发补丁规则，点击“立即下发”  
+#### 2.3.7 杀死进程并重启基准包，请求补丁策略（SDK会自动下载补丁包并合成）  
+#### 2.3.8 再次重启基准包，检验补丁应用结果  
+#### 2.3.9 查看页面，查看激活数据的变化  
