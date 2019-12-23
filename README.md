@@ -14,14 +14,14 @@ Tinker is a hot-fix solution library for Android, it supports dex, library and r
 without reinstall apk.  
 其GitHub地址为：[https://github.com/Tencent/tinker](https://github.com/Tencent/tinker)。  
 Tinker原理如下图所示：  
-![image](https://github.com/tianyalu/BuglyDemo/blob/master/show/tinker.png)  
+![image](https://github.com/tianyalu/BuglyDemo/raw/master/show/tinker.png)  
 
 ### 2.2 热更新集成步骤（暂未考虑NDK）
 详情可参考：[Bugly Android热更新使用指南](https://bugly.qq.com/docs/user-guide/instruction-manual-android-hotfix/?v=20180709165613#_1)。
 #### 2.2.1 注册并获取APP_ID 
 到 [Bugly官网](https://bugly.qq.com/v2/index) 注册并新建项目，随后在“产品设置”下可以看到“产品信息”中的App ID，
 这个ID非常重要，后续需要添加到项目配置中的。  
-![image](https://github.com/tianyalu/BuglyDemo/blob/master/show/bugly_appid.png)  
+![image](https://github.com/tianyalu/BuglyDemo/raw/master/show/bugly_appid.png)  
 #### 2.2.2 添加依赖插件
 工程根目录下`build.gradle`文件中添加：  
 ```groovy 
