@@ -351,13 +351,14 @@ Tinker需要开启MultiDex，需要在dependencies中配置`implementation 'com.
 ### 2.3 热更新操作步骤
 详情可参考：[热更新使用范例](https://bugly.qq.com/docs/user-guide/instruction-manual-android-hotfix-demo/)。  
 #### 2.3.1 打基准安装包并上报联网
-安装包要上传到Bugly管理后台，本地安装此apk并启动。（注：填写唯一的tinkerId，
-注释掉`tinker-support.gradle`中的`baseApk = "${bakPath}/${baseApkDir}/app-release.apk"`）。  
+* 在`tinker-support.gradle`中填写唯一的tinkerId  
+* 注释掉`tinker-support.gradle`中的`baseApk = "${bakPath}/${baseApkDir}/app-release.apk"`  
+* 上传安装包到Bugly管理后台，本地安装此apk并启动  
 #### 2.3.2 对基准包的bug修复（可以是Java代码变更，资源的变更）  
 #### 2.3.3 修改路径
-修改基准包路径[替换为bakApk下基于哪个基准版本要修复的文件夹名称]、修改补丁包tinkerId、mapping文件路径
-（如果开启了混淆需要配置）、resId文件路径。（打开`tinker-support.gradle`中的
-`baseApk = "${bakPath}/${baseApkDir}/app-release.apk"`注释）。  
+* 修改`tinker-support.gradle`中补丁包tinkerId  
+* 修改基准包路径、`mapping`文件路径（如果开启了混淆需要配置）、resId文件路径[实际上只需要替换为bakApk下基于哪个基准版本要修复的文件夹名称，即修改`baseApkDir`即可]
+* 打开`tinker-support.gradle`中的`baseApk = "${bakPath}/${baseApkDir}/app-release.apk"`注释  
 #### 2.3.4 执行`buildTinkerPatchRelease`打Release版本补丁包  
 #### 2.3.5 选择app/build/outputs/patch目录下的补丁包并上传
 注：不要选择tinkerPatch目录下的补丁包，不然上传会有问题。  
