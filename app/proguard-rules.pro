@@ -26,3 +26,8 @@
 # tinker混淆规则
 -dontwarn com.tencent.tinker.**
 -keep class com.tencent.tinker.** { *; }
+
+#SweetAlertDialog
+-keep class cn.pedant.SweetAlert.Rotate3dAnimation {
+  public <init>(...);
+}
