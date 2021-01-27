@@ -9,8 +9,8 @@ android {
         applicationId "com.sty.bugly.demo"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 391
-        versionName "3.9.1"
+        versionCode 414
+        versionName "4.1.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //开启multidex
@@ -64,14 +64,14 @@ android {
     flavorDimensions "tier"
 
 
-//    productFlavors {
-//        xiaomi {
-//            dimension "tier"
-//        }
-//        yyb {
-//            dimension "tier"
-//        }
-//    }
+    productFlavors {
+        xiaomi {
+            dimension "tier"
+        }
+        yyb {
+            dimension "tier"
+        }
+    }
 
 }
 

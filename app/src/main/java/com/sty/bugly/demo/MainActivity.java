@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         tvText2 = findViewById(R.id.tv_text2);
         tvText.setText("Hotfix V" + BuildConfig.VERSION_NAME);
 //        tvText2.setText("392哈哈哈哈 -- 热更新第二次");
-        tvText2.setText("基线版本 391");
-        //tvText2.setText("bug is fixed bug已经被修复了, 热更新哈哈哈 ---> 385   666");
+//        tvText2.setText("基线版本 414");
+        tvText2.setText("bug is fixed bug已经被修复了, 热更新哈哈哈 ---> 414-1");
 
         btnCheckUpgrade = findViewById(R.id.btn_check_upgrade);
         btnCheckHotFix = findViewById(R.id.btn_check_hotfix);

@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Process;
+import android.support.v4.content.FileProvider;
 
 import com.sty.bugly.demo.R;
 import com.sty.bugly.demo.iinterface.ICallback;
@@ -126,13 +128,18 @@ public class DownloadApkUtils {
                     callback.onResult(true);
                 }
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                Uri uri = Uri.fromFile(file);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.setDataAndType(uri, "application/vnd.android.package-archive");
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Uri uri = FileProvider.getUriForFile(context, "com.sty.bugly.demo.fileProvider", file);
+                    i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    i.setDataAndType(uri, "application/vnd.android.package-archive");
+                }else {
+                    Uri uri = Uri.fromFile(file);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.setDataAndType(uri, "application/vnd.android.package-archive");
+                }
                 context.startActivity(i);
                 Process.killProcess(Process.myPid());
                 System.exit(0); // 退出
-
             }
         }.execute(apkFile);
     }
